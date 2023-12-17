@@ -11,17 +11,17 @@ const cookieParser = require("cookie-parser");
 // cors
 const cors = require("cors");
 
+const whitelist = [
+  "https://quote-ocean-frontend-fl54oygiu-ayarn-modis-projects.vercel.app",
+  "https://quote-ocean-frontend.vercel.app",
+];
+
 const corsOptions = {
   origin: (origin, callback) => {
-    const allowedOrigins = [
-      "https://quote-ocean-frontend-fl54oygiu-ayarn-modis-projects.vercel.app",
-      "https://quote-ocean-frontend.vercel.app"
-    ];
-
-    if (allowedOrigins.includes(origin)) {
+    if (whitelist.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
-      callback(new Error("Not allowed by CORS"));
+      callback(new Error());
     }
   },
   methods: ["GET", "POST", "PUT", "DELETE"],
