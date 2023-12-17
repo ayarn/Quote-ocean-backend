@@ -12,7 +12,7 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 app.use(
   cors({
-    origin: ["https://quote-ocean-backend.vercel.app"],
+    origin: ["https://quote-ocean-frontend.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
