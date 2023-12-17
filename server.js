@@ -26,6 +26,10 @@ connectDB();
 app.use(express.json());
 app.use(cookieParser());
 
+app.get("/", (req, res) => {
+  res.json("Hello");
+});
+
 // contains all routes
 app.use(require("./router/auth"));
 
