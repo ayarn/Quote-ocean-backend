@@ -29,7 +29,7 @@ const cors = require("cors");
 // };
 
 const corsOptions = {
-  origin: "*",
+  origin: "https://quote-ocean-frontend.vercel.app",
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 };
