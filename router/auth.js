@@ -10,7 +10,6 @@ const startCronJobsForAllUsers = require("../jobs/sendEmail");
 
 startCronJobsForAllUsers();
 
-
 // Home route
 router.get("/", (req, res) => {
   res.send(`Home route from server`);
@@ -81,6 +80,8 @@ router.post("/login", async (req, res) => {
       res.cookie("jwtoken", token, {
         expires: new Date(Date.now() + 3000000),
         httpOnly: true,
+        sameSite: "None",
+        secure: true,
       });
 
       if (!isPasswordMatch) {
@@ -107,7 +108,9 @@ router.post("/contact", async (req, res) => {
 
   try {
     await getUserMessage(msgObj);
-    res.status(201).json({ message: "Your message successfully send to Admin !" });
+    res
+      .status(201)
+      .json({ message: "Your message successfully send to Admin !" });
   } catch (err) {
     console.log(err);
   }
